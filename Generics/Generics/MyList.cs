@@ -1,21 +1,23 @@
 ﻿using System.Collections;
 namespace Generics
 {
-    internal class MyList : IEnumerable
+    internal class MyList<T> : IEnumerable
+       
     {
-        private List<string> newCollection = new List<string>() { "E", "A", "B" };
+        public List<T> newCollection = new List<T>();
 
-        public void AddRange()
+        private string[] a = new string[] { "k", "b", "c", "d", "e"};
+
+        public void AddRange(List<string> letters)
         {
-            string[] letters = new string[3] { "L", "J", "Y" };
-            newCollection.AddRange(letters);
+            letters.AddRange(a);
         }
 
-        public void Add(string add)
+        public void Add(List<string> letters, string add)
         {
-            if (!newCollection.Contains(add))
+            if (!letters.Contains(add))
             {
-                newCollection.Add(add);
+                letters.Add(add);
                 Console.WriteLine("Added: " + add);
             }
             else
@@ -24,11 +26,11 @@ namespace Generics
             }
         }
 
-        public void Remove(string remove)
+        public void Remove(List<string> letters, string remove)
         {
-            if (newCollection.Contains(remove))
+            if (letters.Contains(remove))
             {
-                newCollection.Remove(remove);
+                letters.Remove(remove);
                 Console.WriteLine("Removed: " + remove);
             }
             else
@@ -37,33 +39,29 @@ namespace Generics
             }
         }
 
-        public void RemoveAt()
+        public void RemoveAt(List<string> letters)
         {
             int index = 0;
-            foreach (string s in newCollection)
+            foreach (string s in letters)
             {
                 index++;
                 if (index == 3)
                 {
-                    newCollection.RemoveAt(index);
+                    letters.RemoveAt(index);
                     Console.WriteLine("Removed a letter because of index " + index);
                     break;
                 }
             }     
         }
 
-        public void Sort()
+        public void Sort(List<string> letters)
         {
-            for (int i = 0; i < newCollection.Count; i++)
+            for (int i = 0; i < letters.Count; i++)
             {
-                if (!newCollection[i].StartsWith("A"))
+                if (!letters[i].StartsWith("A"))
                 {
                     newCollection.Sort();
                     Console.WriteLine("Sorted:");
-                    break;
-                }
-                else
-                {
                     break;
                 }
             }

@@ -4,20 +4,20 @@
     {
         public static void Main(string[] args)
         {
-            MyList list = new MyList();
+            MyList<string> list = new MyList<string>();
 
             Console.WriteLine("Enter a letter which you want to implement");
             string add = Console.ReadLine();
-            list.Add(add);
+            list.newCollection.Add(add);
 
-            list.AddRange();
+            list.AddRange(list.newCollection);
 
             Console.WriteLine("Enter a letter which you want to delete");
             string remove = Console.ReadLine();
-            list.Remove(remove);
+            list.Remove(list.newCollection, remove);
 
-            list.RemoveAt();
-            list.Sort();
+            list.RemoveAt(list.newCollection);
+            list.Sort(list.newCollection);
 
             foreach (var letter in list)
             {
